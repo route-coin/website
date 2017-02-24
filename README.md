@@ -1,1 +1,1 @@
-This is the source code for the https://routecoin.net website.
+This is the source code for the http://routecoin.net and http://routecoin.io websites.
