@@ -419,21 +419,23 @@ This is an example page. It's different from a blog post because it will stay in
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
 
-            for(var i = 0; i < 5; i++)
+            for(var i = 1; i < 5; i++)
             {
                 ctx.beginPath();
                 ctx.strokeStyle = "#888";
                 ctx.moveTo(i * 200,0);
                 ctx.lineTo(i * 200,1000);
+                ctx.setLineDash([5, 3]);/*dashes are 5px and spaces are 3px*/
                 ctx.stroke();
 
             }
-            for(var i = 0; i < nodes.length; i++)
+            for(var i = 1; i < 5; i++)
             {            
                 ctx.beginPath();
                 ctx.strokeStyle = "#888";
                 ctx.moveTo(0,i * 200);
                 ctx.lineTo(1000,i * 200);
+                ctx.setLineDash([5, 3]);/*dashes are 5px and spaces are 3px*/
                 ctx.stroke();                
             }
 
@@ -445,6 +447,7 @@ This is an example page. It's different from a blog post because it will stay in
                     {
                         ctx.beginPath();
                         ctx.strokeStyle = "#888";
+                        ctx.setLineDash([0, 0]); 
                         ctx.moveTo(nodes[i].x, nodes[i].y);
                         ctx.lineTo(nodes[j].x, nodes[j].y);
                         ctx.stroke();                
