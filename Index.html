@@ -14,17 +14,10 @@
 <script type='text/javascript' src='/assets/js/jquery.js'></script>
 <script type='text/javascript' src='/assets/js/jquery-migrate.min.js'></script>
 <script type='text/javascript' src='/assets/js/bootstrap.js'></script>
-<script type='text/javascript' src='/assets/js/vis.js'></script>
-  <style type="text/css">
-    #mynetwork {
-      width: 100%;
-      height: 600px;
-    }
-  </style>
-
 
 </head>
-<body class="home blog" id="home" onload="draw()">
+
+<body class="home blog">
 <header>
 <div class="container">
 <nav id="menu_row" class="navbar navbar-default inbanner " role="navigation">
@@ -168,7 +161,330 @@ This is an example page. It's different from a blog post because it will stay in
     <!--<div class="col-sm-3 col-centered item">
     <a href="#"><i class="fa fa-support"></i><h4>EXPERT SUPPORT</h4><p>Praesent faucibus nisl sit amet nulla sollicitudin pretium a sed purus. Nullam bibendum porta magna.</p></a>
     </div>-->
-    <div id="mynetwork"></div>
+    <br/>
+
+    <div id="mynetwork">
+        <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #666;">
+        </canvas>        
+        <script>
+            var nodes = [
+                {
+                    title: "Base Station",
+                    x: 500,
+                    y: 500,
+                    isBase: true,
+                },                
+                {
+                    title: "Node 1",
+                    x: 410,
+                    y: 360,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 220,
+                    y: 100,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 300,
+                    y: 810,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 990,
+                    y: 90,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 70,
+                    y: 870,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 90,
+                    y: 50,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 900,
+                    y: 60,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 650,
+                    y: 110,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 390,
+                    y: 160,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 680,
+                    y: 440,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 90,
+                    y: 470,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 840,
+                    y: 810,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 400,
+                    y: 30,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 770,
+                    y: 80,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 450,
+                    y: 550,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 350,
+                    y: 440,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 780,
+                    y: 670,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 100,
+                    y: 530,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 900,
+                    y: 890,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 760,
+                    y: 840,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 890,
+                    y: 30,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 780,
+                    y: 390,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 750,
+                    y: 410,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 700,
+                    y: 200,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 610,
+                    y: 940,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 540,
+                    y: 500,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 250,
+                    y: 570,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 40,
+                    y: 30,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 810,
+                    y: 870,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 430,
+                    y: 430,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 600,
+                    y: 750,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 330,
+                    y: 790,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 540,
+                    y: 750,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 30,
+                    y: 220,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 790,
+                    y: 690,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 690,
+                    y: 940,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 400,
+                    y: 70,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 270,
+                    y: 920,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 910,
+                    y: 110,
+                    isBase: false,
+                },
+                {
+                    title: "Node 2",
+                    x: 860,
+                    y: 240,
+                    isBase: false,
+                }                 
+            ];
+
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+            for(var i = 0; i < 5; i++)
+            {
+                ctx.beginPath();
+                ctx.strokeStyle = "#888";
+                ctx.moveTo(i * 200,0);
+                ctx.lineTo(i * 200,1000);
+                ctx.stroke();
+
+            }
+            for(var i = 0; i < nodes.length; i++)
+            {            
+                ctx.beginPath();
+                ctx.strokeStyle = "#888";
+                ctx.moveTo(0,i * 200);
+                ctx.lineTo(1000,i * 200);
+                ctx.stroke();                
+            }
+
+            for(var i = 0; i < nodes.length; i++)
+            {            
+                for(var j = 0; j < nodes.length; j++)
+                {                            
+                    if(Math.pow(Math.abs(nodes[i].x - nodes[j].x),2) + Math.pow(Math.abs(nodes[i].y - nodes[j].y),2) <= 25000)
+                    {
+                        ctx.beginPath();
+                        ctx.strokeStyle = "#888";
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.stroke();                
+                    }
+                }
+            }
+
+            // ctx.beginPath();
+            // ctx.strokeStyle = "#888";
+            // ctx.moveTo(95,50);
+            // ctx.lineTo(200,100);
+            // ctx.stroke();
+
+            for(var i = 0; i < nodes.length; i++)
+            {
+                ctx.beginPath();
+                if(nodes[i].isBase == true) {
+                    ctx.fillStyle = "blue";
+                }
+                else {
+                    ctx.fillStyle = "#888";
+                }
+
+                ctx.arc(nodes[i].x, nodes[i].y,10,0,2*Math.PI);
+                ctx.fill();
+            }
+
+            // ctx.beginPath();
+            // ctx.strokeStyle = "#888";
+            // ctx.moveTo(95,50);
+            // ctx.lineTo(200,100);
+            // ctx.stroke();
+
+            // ctx.beginPath();
+            // ctx.fillStyle = "blue";
+            // ctx.arc(500,500,20,0,2*Math.PI);
+            // ctx.fill();
+
+        </script>
+    </div>
 </div>
 </div>
 </div>
@@ -246,6 +562,8 @@ This is an example page. It's different from a blog post because it will stay in
 </div>
 </div>-->
 </div>
+
+
 </div>
 </div>
 </div>
@@ -304,7 +622,7 @@ Jan. 9, 2017 by <a href="https://koukia.ca/" title="Posts by Aram Koukia" rel="a
 <a href="https://github.com/route-coin" target="_blank"><i class="fa fa-github"></i><br><span class="social-item-title h5">Github</span><br><span class="social-item-sub-title h5">Follow our code.</span></a>
 </div>
 <div data-sr="wait 0.2s, scale up 25%">
-<a href="https://twitter.com/routecoin.com"><i class="fa fa-twitter"></i><br><span class="social-item-title h5">Twitter</span><br><span class="social-item-sub-title h5">Latest tweets.</span></a>
+<a href="https://twitter.com/routecoin"><i class="fa fa-twitter"></i><br><span class="social-item-title h5">Twitter</span><br><span class="social-item-sub-title h5">Latest tweets.</span></a>
 </div>
 <div data-sr="wait 0.2s, scale up 25%">
 <a href="https://facebook.com/routecoin"><i class="fa fa-facebook"></i><br><span class="social-item-title h5">Facebook</span><br><span class="social-item-sub-title h5">Be our friend.</span></a>
@@ -366,111 +684,6 @@ Jan. 9, 2017 by <a href="https://koukia.ca/" title="Posts by Aram Koukia" rel="a
 
 <!--<script src="/assets/js/particles.js"></script>
 <script src="/assets/js/app.js"></script>-->
-<script type="text/javascript">
-var TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-    };
-
-    TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
-
-        if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        var delta = 200 - Math.random() * 100;
-
-        if (this.isDeleting) { delta /= 2; }
-
-        if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-        }
-
-        setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
-
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-        document.body.appendChild(css);
-    };
-</script>
-<script type="text/javascript">
-    // create an array with nodes
-    var nodes = new vis.DataSet([
-        {id: 1, label: 'Node 1', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 2, label: 'Node 2', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 3, label: 'Node 3', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 4, label: 'Node 4', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 5, label: 'Node 5', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 6, label: 'Node 6', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 7, label: 'Node 7', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 8, label: 'Node 8', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 9, label: 'Node 9', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 10, label: 'Node 10', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 11, label: 'Node 11', image: '/assets/images/laptop.png', shape: 'image'},
-        {id: 12, label: 'Base Station', image: '/assets/images/bs.png', shape: 'image'}
-    ]);
-
-    // create an array with edges
-    var edges = new vis.DataSet([
-        {from: 1, to: 2},
-        {from: 2, to: 4},
-        {from: 2, to: 3},
-        {from: 4, to: 5},
-        {from: 4, to: 6},
-        {from: 6, to: 7},
-        {from: 6, to: 8},
-        {from: 6, to: 9},
-        {from: 9, to: 10},
-        {from: 9, to: 11},
-        {from: 11, to: 12},
-        {from: 9, to: 12},
-        {from: 10, to: 12}
-    ]);
-
-    // create a network
-    var container = document.getElementById('mynetwork');
-
-    // provide the data in the vis format
-    var data = {
-        nodes: nodes,
-        edges: edges
-    };
-    var options = {};
-
-    // initialize your network!
-    var network = new vis.Network(container, data, options);
-</script>
 
 </body>
 </html>
