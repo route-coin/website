@@ -164,12 +164,12 @@ This is an example page. It's different from a blog post because it will stay in
     <br/>
 
     <div id="mynetwork">
-        <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #666;">
+        <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #666;" onmousemove="handleMouseMove(event)">
         </canvas>        
         <script>
             var nodes = [
                 {
-                    title: "Base Station",
+                    title: "BS",
                     x: 500,
                     y: 500,
                     isBase: true,
@@ -187,229 +187,229 @@ This is an example page. It's different from a blog post because it will stay in
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 3",
                     x: 300,
                     y: 810,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 4",
                     x: 990,
                     y: 90,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 5",
                     x: 70,
                     y: 870,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 6",
                     x: 90,
                     y: 50,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 7",
                     x: 900,
                     y: 60,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 8",
                     x: 650,
                     y: 110,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 9",
                     x: 390,
                     y: 160,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 10",
                     x: 680,
                     y: 440,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 11",
                     x: 90,
                     y: 470,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 12",
                     x: 840,
                     y: 810,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 13",
                     x: 400,
                     y: 30,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 14",
                     x: 770,
                     y: 80,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 15",
                     x: 450,
                     y: 550,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 16",
                     x: 350,
                     y: 440,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 17",
                     x: 780,
                     y: 670,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 18",
                     x: 100,
                     y: 530,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 19",
                     x: 900,
                     y: 890,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 20",
                     x: 760,
                     y: 840,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 21",
                     x: 890,
                     y: 30,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 22",
                     x: 780,
                     y: 390,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 23",
                     x: 750,
                     y: 410,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 24",
                     x: 700,
                     y: 200,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 25",
                     x: 610,
                     y: 940,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 26",
                     x: 540,
                     y: 500,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 27",
                     x: 250,
                     y: 570,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 28",
                     x: 40,
                     y: 30,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 29",
                     x: 810,
                     y: 870,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 30",
                     x: 430,
                     y: 430,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 31",
                     x: 600,
                     y: 750,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 32",
                     x: 330,
                     y: 790,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 33",
                     x: 540,
                     y: 750,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 34",
                     x: 30,
                     y: 220,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 35",
                     x: 790,
                     y: 690,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 36",
                     x: 690,
                     y: 940,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 37",
                     x: 400,
                     y: 70,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 38",
                     x: 270,
                     y: 920,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 39",
                     x: 910,
                     y: 110,
                     isBase: false,
                 },
                 {
-                    title: "Node 2",
+                    title: "Node 40",
                     x: 860,
                     y: 240,
                     isBase: false,
@@ -450,7 +450,8 @@ This is an example page. It's different from a blog post because it will stay in
                         ctx.setLineDash([0, 0]); 
                         ctx.moveTo(nodes[i].x, nodes[i].y);
                         ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.stroke();                
+                        ctx.stroke();      
+
                     }
                 }
             }
@@ -473,6 +474,13 @@ This is an example page. It's different from a blog post because it will stay in
 
                 ctx.arc(nodes[i].x, nodes[i].y,10,0,2*Math.PI);
                 ctx.fill();
+                // ctx.mouseover(function (event) {
+                //      this.attr({tooltip: nodes[i].title});
+                // });
+
+                ctx.font="10px Arial";
+                ctx.strokeText(nodes[i].title, nodes[i].x + 15, nodes[i].y);
+
             }
 
             // ctx.beginPath();
@@ -485,6 +493,28 @@ This is an example page. It's different from a blog post because it will stay in
             // ctx.fillStyle = "blue";
             // ctx.arc(500,500,20,0,2*Math.PI);
             // ctx.fill();
+
+            function handleMouseMove(e) {
+                // mouseX=parseInt(e.clientX-offsetX);
+                // mouseY=parseInt(e.clientY-offsetY);
+
+                // // Put your mousemove stuff here
+                // var hit = false;
+                // for (var i = 0; i < nodes.length; i++) {
+                //     var dot = nodes[i];
+                //     var dx = mouseX - dot.x;
+                //     var dy = mouseY - dot.y;
+                //     if (dx * dx + dy * dy < 16) {
+                //         tipCanvas.style.left = (dot.x) + "px";
+                //         tipCanvas.style.top = (dot.y - 40) + "px";
+                //         tipCtx.clearRect(0, 0, tipCanvas.width, tipCanvas.height);
+                //         tipCtx.fillText(dot.title, 5, 15);
+                //         hit = true;
+                //     }
+                // }
+                // if (!hit) { tipCanvas.style.left = "-200px"; }
+            }
+
 
         </script>
     </div>
