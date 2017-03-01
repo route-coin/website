@@ -439,28 +439,23 @@ This is an example page. It's different from a blog post because it will stay in
                 ctx.stroke();                
             }
 
-            for(var i = 0; i < nodes.length; i++)
-            {            
-                for(var j = 0; j < nodes.length; j++)
-                {                            
-                    if(Math.pow(Math.abs(nodes[i].x - nodes[j].x),2) + Math.pow(Math.abs(nodes[i].y - nodes[j].y),2) <= 25000)
-                    {
-                        ctx.beginPath();
-                        ctx.strokeStyle = "#888";
-                        ctx.setLineDash([0, 0]); 
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.stroke();      
+            // draw a line if they are close
+            // for(var i = 0; i < nodes.length; i++)
+            // {            
+            //     for(var j = 0; j < nodes.length; j++)
+            //     {                            
+            //         if(Math.sqrt(Math.pow(Math.abs(nodes[i].x - nodes[j].x),2) + Math.pow(Math.abs(nodes[i].y - nodes[j].y),2)) <= 200)
+            //         {
+            //             ctx.beginPath();
+            //             ctx.strokeStyle = "#888";
+            //             ctx.setLineDash([0, 0]); 
+            //             ctx.moveTo(nodes[i].x, nodes[i].y);
+            //             ctx.lineTo(nodes[j].x, nodes[j].y);
+            //             ctx.stroke();      
 
-                    }
-                }
-            }
-
-            // ctx.beginPath();
-            // ctx.strokeStyle = "#888";
-            // ctx.moveTo(95,50);
-            // ctx.lineTo(200,100);
-            // ctx.stroke();
+            //         }
+            //     }
+            // }
 
             for(var i = 0; i < nodes.length; i++)
             {
@@ -474,6 +469,13 @@ This is an example page. It's different from a blog post because it will stay in
 
                 ctx.arc(nodes[i].x, nodes[i].y,10,0,2*Math.PI);
                 ctx.fill();
+
+                // display the coverage
+                ctx.beginPath();
+                ctx.fillStyle = "rgba(255, 0, 0, 0.08)";
+                ctx.arc(nodes[i].x, nodes[i].y,100,0,2*Math.PI);
+                ctx.fill();
+
                 // ctx.mouseover(function (event) {
                 //      this.attr({tooltip: nodes[i].title});
                 // });
