@@ -316,6 +316,7 @@ class NetworkSimulation {
                     if(neighborCount == 0)
                     {
                         toastr.error("There are no nodes close by.");
+                        toastr.success("Contract aborted");
                     }
                 }
             });
