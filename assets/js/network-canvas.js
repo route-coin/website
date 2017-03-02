@@ -299,7 +299,7 @@ class NetworkSimulation {
                     var neighborCount = 0;
                     for(var i = 0; i < nodes.length; i++)
                     {                            
-                        if(node.title != nodes[i].title && Math.sqrt(Math.pow(Math.abs(node.x - nodes[i].x),2) + Math.pow(Math.abs(node.y - nodes[i].y),2)) <= 200)
+                        if(node.title != nodes[i].title && Math.sqrt(Math.pow(Math.abs(node.x - nodes[i].x),2) + Math.pow(Math.abs(node.y - nodes[i].y),2)) <= 50)
                         {
                             // draw line
                             ctx.beginPath();
@@ -373,24 +373,48 @@ class NetworkSimulation {
 
     DrawNodes(ctx, nodes) {
 
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(255, 254, 196, 0.58)";
+        ctx.arc(500, 500, 500,0,2*Math.PI);
+        ctx.fill();
+
+
         for(var i = 0; i < nodes.length; i++)
         {
             ctx.beginPath();
             if(nodes[i].isBase == true) {
+
                 ctx.fillStyle = "blue";
+                ctx.arc(nodes[i].x, nodes[i].y,20,0,2*Math.PI);
+                ctx.fill();
+
+                // display the coverage circle around each node
+                ctx.beginPath();
+                ctx.fillStyle = "rgba(255, 0, 0, 0.08)";
+                ctx.arc(nodes[i].x, nodes[i].y,200,0,2*Math.PI);
+                ctx.fill();
+
+                ctx.fillStyle = "white";
+                ctx.font="20px Georgia";
+                ctx.fillText("BS",nodes[i].x-12, nodes[i].y+6);
+
+                
             }
             else {
+
                 ctx.fillStyle = "#888";
+                ctx.arc(nodes[i].x, nodes[i].y,10,0,2*Math.PI);
+                ctx.fill();
+
+                // display the coverage circle around each node
+                ctx.beginPath();
+                ctx.fillStyle = "rgba(255, 0, 0, 0.08)";
+                ctx.arc(nodes[i].x, nodes[i].y,50,0,2*Math.PI);
+                ctx.fill();
+
             }
 
-            ctx.arc(nodes[i].x, nodes[i].y,10,0,2*Math.PI);
-            ctx.fill();
 
-            // display the coverage circle around each node
-            ctx.beginPath();
-            ctx.fillStyle = "rgba(255, 0, 0, 0.08)";
-            ctx.arc(nodes[i].x, nodes[i].y,100,0,2*Math.PI);
-            ctx.fill();
         }
        
     }
