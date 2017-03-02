@@ -282,6 +282,18 @@ class NetworkSimulation {
                 
                 if (networkSimulation.IsIntersect(pos , node)) {
                     toastr.clear();
+                    if(node.isBase == true)
+                    {
+                        toastr.error("This is Base Station!");
+                        return;
+                    }
+
+                    if(Math.sqrt(Math.pow(Math.abs(node.x - nodes[0].x),2) + Math.pow(Math.abs(node.y - nodes[0].y),2)) <= 200)
+                    {
+                        toastr.info("Node is close to Base Station. No need for a Contract.");
+                        return;
+                    }
+
                     toastr.info("Request access from " + node.title + " to Base Station.");
                     toastr.success("Contract Created");
                     var neighborCount = 0;
@@ -289,6 +301,14 @@ class NetworkSimulation {
                     {                            
                         if(node.title != nodes[i].title && Math.sqrt(Math.pow(Math.abs(node.x - nodes[i].x),2) + Math.pow(Math.abs(node.y - nodes[i].y),2)) <= 200)
                         {
+                            // draw line
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#888";
+                            ctx.setLineDash([0, 0]); 
+                            ctx.moveTo(node.x, node.y);
+                            ctx.lineTo(nodes[i].x, nodes[i].y);
+                            ctx.stroke();      
+
                             toastr.success("Whisper sent to neighbor node: " + nodes[i].title);
                             neighborCount++;
                         }
