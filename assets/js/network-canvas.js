@@ -302,12 +302,13 @@ class NetworkSimulation {
                         if(node.title != nodes[i].title && Math.sqrt(Math.pow(Math.abs(node.x - nodes[i].x),2) + Math.pow(Math.abs(node.y - nodes[i].y),2)) <= 50)
                         {
                             // draw line
-                            ctx.beginPath();
-                            ctx.strokeStyle = "#888";
-                            ctx.setLineDash([0, 0]); 
-                            ctx.moveTo(node.x, node.y);
-                            ctx.lineTo(nodes[i].x, nodes[i].y);
-                            ctx.stroke();      
+                            // ctx.beginPath();
+                            // ctx.strokeStyle = "#888";
+                            // ctx.setLineDash([0, 0]); 
+                            // ctx.moveTo(node.x, node.y);
+                            // ctx.lineTo(nodes[i].x, nodes[i].y);
+                            // ctx.stroke();      
+                            networkSimulation.AnimateDrawLine(ctx, 0, node.x, node.y, nodes[i].x, nodes[i].y);
 
                             toastr.success("Whisper sent to neighbor node: " + nodes[i].title);
                             neighborCount++;
@@ -440,6 +441,32 @@ class NetworkSimulation {
         // }
         // if (!hit) { tipCanvas.style.left = "-200px"; }
     }
+
+    AnimateDrawLine(ctx, ratio, x1, y1, x2, y2) {
+         ratio = ratio || 0;
+        networkSimulation.DrawLine(ctx, x1, y1, x2, y2, ratio);
+        if(ratio<1) {
+            requestAnimationFrame(function() {
+                networkSimulation.AnimateDrawLine(ctx, ratio + 0.05, x1, y1, x2, y2);
+            });
+        }
+    }
+
+    DrawLine(ctx, x1, y1, x2, y2, ratio) {
+        //ctx.fillRect(x1,y1,x2,y2);
+        ctx.beginPath();
+        ctx.strokeStyle = "#888";
+        ctx.setLineDash([0, 0]);         
+        ctx.moveTo(x1,y1);
+        x2 = x1 + ratio * (x2-x1);
+        y2 = y1 + ratio * (y2-y1);
+        ctx.lineTo(x2,y2);
+        ctx.stroke();
+        // And if we intend to start new things after
+        // this, and this is part of an outline, 
+        // we probably also want a ctx.closePath()
+    }
+
 
 }
 
