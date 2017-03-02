@@ -253,10 +253,82 @@ class NetworkSimulation {
 
     Draw() {
 
+        toastr.options = {
+            "closeButton": true,
+            "newestOnTop": false,
+            "showDuration": "2000",
+        }
+    
         var nodes = this.GetNodes();
-        
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
+
+        var canvas = document.getElementById("myCanvas");
+        var canvasLeft = canvas.offsetLeft;
+        var canvasTop = canvas.offsetTop;
+
+        var ctx = canvas.getContext("2d");
+
+        this.DrawCanvasGuideLines(ctx);
+
+        canvas.addEventListener('click', function(event) {
+
+           var rect = this.getBoundingClientRect();            
+
+            const pos = {
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top
+            };
+
+            nodes.forEach(node => {
+                
+                if (networkSimulation.IsIntersect(pos , node)) {
+                    toastr.clear();
+                    toastr.info("Request access from " + node.title + " to Base Station.");
+                    toastr.success("Contract Created");
+                    var neighborCount = 0;
+                    for(var i = 0; i < nodes.length; i++)
+                    {                            
+                        if(node.title != nodes[i].title && Math.sqrt(Math.pow(Math.abs(node.x - nodes[i].x),2) + Math.pow(Math.abs(node.y - nodes[i].y),2)) <= 200)
+                        {
+                            toastr.success("Whisper sent to neighbor node: " + nodes[i].title);
+                            neighborCount++;
+                        }
+                    }
+                    if(neighborCount == 0)
+                    {
+                        toastr.error("There are no nodes close by.");
+                    }
+                }
+            });
+
+        }, false);
+
+        // draw a line if they are close
+        // for(var i = 0; i < nodes.length; i++)
+        // {            
+        //     for(var j = 0; j < nodes.length; j++)
+        //     {                            
+        //         if(Math.sqrt(Math.pow(Math.abs(nodes[i].x - nodes[j].x),2) + Math.pow(Math.abs(nodes[i].y - nodes[j].y),2)) <= 200)
+        //         {
+        //             ctx.beginPath();
+        //             ctx.strokeStyle = "#888";
+        //             ctx.setLineDash([0, 0]); 
+        //             ctx.moveTo(nodes[i].x, nodes[i].y);
+        //             ctx.lineTo(nodes[j].x, nodes[j].y);
+        //             ctx.stroke();      
+
+        //         }
+        //     }
+        // }
+
+        this.DrawNodes(ctx, nodes);
+
+    }
+
+    IsIntersect(point, circle) {
+        return Math.sqrt((point.x-circle.x) ** 2 + (point.y - circle.y) ** 2) < 10;
+    }
+
+    DrawCanvasGuideLines(ctx) {
 
         for(var i = 1; i < 5; i++)
         {
@@ -277,24 +349,9 @@ class NetworkSimulation {
             ctx.setLineDash([5, 3]);/*dashes are 5px and spaces are 3px*/
             ctx.stroke();                
         }
+    }
 
-        // draw a line if they are close
-        // for(var i = 0; i < nodes.length; i++)
-        // {            
-        //     for(var j = 0; j < nodes.length; j++)
-        //     {                            
-        //         if(Math.sqrt(Math.pow(Math.abs(nodes[i].x - nodes[j].x),2) + Math.pow(Math.abs(nodes[i].y - nodes[j].y),2)) <= 200)
-        //         {
-        //             ctx.beginPath();
-        //             ctx.strokeStyle = "#888";
-        //             ctx.setLineDash([0, 0]); 
-        //             ctx.moveTo(nodes[i].x, nodes[i].y);
-        //             ctx.lineTo(nodes[j].x, nodes[j].y);
-        //             ctx.stroke();      
-
-        //         }
-        //     }
-        // }
+    DrawNodes(ctx, nodes) {
 
         for(var i = 0; i < nodes.length; i++)
         {
@@ -309,32 +366,13 @@ class NetworkSimulation {
             ctx.arc(nodes[i].x, nodes[i].y,10,0,2*Math.PI);
             ctx.fill();
 
-            // display the coverage
+            // display the coverage circle around each node
             ctx.beginPath();
             ctx.fillStyle = "rgba(255, 0, 0, 0.08)";
             ctx.arc(nodes[i].x, nodes[i].y,100,0,2*Math.PI);
             ctx.fill();
-
-            // ctx.mouseover(function (event) {
-            //      this.attr({tooltip: nodes[i].title});
-            // });
-
-            //ctx.font="10px Arial";
-            //ctx.strokeText(nodes[i].title, nodes[i].x + 15, nodes[i].y);
-
         }
-
-        // ctx.beginPath();
-        // ctx.strokeStyle = "#888";
-        // ctx.moveTo(95,50);
-        // ctx.lineTo(200,100);
-        // ctx.stroke();
-
-        // ctx.beginPath();
-        // ctx.fillStyle = "blue";
-        // ctx.arc(500,500,20,0,2*Math.PI);
-        // ctx.fill();
-
+       
     }
 
     HandleMouseMove(e) {
