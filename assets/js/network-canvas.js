@@ -144,17 +144,17 @@ class NetworkSimulation {
                     toastr.clear();
                     if(node.isBase == true)
                     {
-                        toastr.error("This is Base Station!");
+                        toastr.error("This is Sink Node!");
                         return;
                     }
 
                     if(Math.sqrt(Math.pow(Math.abs(node.x - nodes[0].x),2) + Math.pow(Math.abs(node.y - nodes[0].y),2)) <= 200)
                     {
-                        toastr.info("Node is close to Base Station. No need for a Contract.");
+                        toastr.info("Node is close to Sink Node. No need for a Contract.");
                         return;
                     }
 
-                    toastr.info("Request access from " + node.title + " to Base Station.");
+                    toastr.info("Request access from " + node.title + " to Sink Node.");
                     toastr.success("Contract Created");
                     var neighborCount = 0;
                     for(var i = 0; i < nodes.length; i++)
