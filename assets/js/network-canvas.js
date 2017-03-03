@@ -254,9 +254,9 @@ class NetworkSimulation {
                 ctx.arc(nodes[i].x, nodes[i].y,200,0,2*Math.PI);
                 ctx.fill();
 
-                ctx.fillStyle = "white";
+                ctx.fillStyle = "Red";
                 ctx.font="20px Georgia";
-                ctx.fillText("BS",nodes[i].x-12, nodes[i].y+6);
+                ctx.fillText("Sink Node",nodes[i].x-40, nodes[i].y+6);
 
                 
             }
